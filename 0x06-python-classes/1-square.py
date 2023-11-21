@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 
-"""
-    square class module
-"""
+"""square class module"""
+
 
 class Square:
-    """ Square object with size private instance attr
-    """
+    """ Square object with size private instance attr"""
 
     def __init__(self, size):
         """ Square class instance initialization
