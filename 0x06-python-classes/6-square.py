@@ -9,13 +9,15 @@ class Square:
     """ Square class with instance private attr size
     """
 
-    def __init__(self, size=0):
+    def __init__(self, size=0, position=(0, 0)):
         """ Square class instance initialization
 
         Args:
             size (int, optional): size of the square. Defaults to 0.
+            position (tuple, optional): position of the square object
         """
         self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -43,6 +45,31 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = size
 
+    @property
+    def position(self):
+        """ get the position att
+
+        Returns:
+            tuple: the square position
+        """
+        return self.__position
+
+    @position.setter
+    def position(self, value):
+        """ Sets position values
+
+        Args:
+            value (tuple): position of the square
+
+        Raises:
+            TypeError: Position must be a tuple with 2 positive int
+        """
+        if type(value) != tuple or len(value) != 2 or \
+           not all([type(i) == int for i in value]) or \
+           not all([i >= 0 for i in value]):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__position = value
+
     def area(self):
         """ Area method for the square class
 
@@ -56,5 +83,9 @@ class Square:
         """
         if self.__size == 0:
             print("")
+            return
+        for i in range(self.__position[1]):
+            print("")
         for i in range(self.__size):
+            print(" " * self.__position[0], end="")
             print("#" * self.__size)
